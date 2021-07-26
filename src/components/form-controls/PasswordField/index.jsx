@@ -1,4 +1,4 @@
-import { FormHelperText, TextField } from '@material-ui/core';
+import { FormHelperText } from '@material-ui/core';
 import FormControl from '@material-ui/core/FormControl';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -60,8 +60,8 @@ function PasswordField(props) {
               onBlur={onBlur}
               onChange={onChange}
             />
+            <FormHelperText error={invalid}>{error?.message}</FormHelperText>
           </FormControl>
-          <FormHelperText error={invalid}>{error?.message}</FormHelperText>
         </>
       )}
     />

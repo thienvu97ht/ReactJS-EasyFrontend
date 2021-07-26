@@ -35,7 +35,24 @@ RegisterForm.propTypes = {
 function RegisterForm(props) {
   const classes = useStyle();
 
-  const schema = yup.object().shape({});
+  const schema = yup.object().shape({
+    fullName: yup
+      .string()
+      .required('Please enter your full name.')
+      .test('shold has at least tow words', 'Please enter at least tow words', (value) => {
+        return value.split(' ').length >= 2;
+      }),
+
+    email: yup
+      .string()
+      .required('Please enter your email')
+      .email('Please enter an valid email address'),
+
+    password: yup
+      .string()
+      .required('Please enter your password')
+      .min(6, 'Please enter at least 6 characters'),
+  });
 
   const form = useForm({
     defaultValues: {
@@ -44,6 +61,7 @@ function RegisterForm(props) {
       password: '',
       retypePassword: '',
     },
+    reValidateMode: 'onSubmit',
     resolver: yupResolver(schema),
   });
 
@@ -67,8 +85,8 @@ function RegisterForm(props) {
       </Typography>
 
       <form onSubmit={form.handleSubmit(handleSubmit)}>
-        <InputField name="fullname" label="Full Name" form={form} />
-        <InputField name="email" label="Emal" form={form} />
+        <InputField name="fullName" label="Full Name" form={form} />
+        <InputField name="email" label="Email" form={form} />
         <PasswordField name="password" label="Password" form={form} />
         <PasswordField name="retypePassword" label="Retype Password" form={form} />
 
