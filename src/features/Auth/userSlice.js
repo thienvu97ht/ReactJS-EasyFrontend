@@ -1,8 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import userApi from 'api/userApi';
 
-const register = createAsyncThunk('uesr/register', async (payload) => {
-  // call API to register
+export const register = createAsyncThunk('user/register', async (payload) => {
   const data = await userApi.register(payload);
 
   // Save data to local storage
@@ -14,7 +13,7 @@ const register = createAsyncThunk('uesr/register', async (payload) => {
 });
 
 const userSlice = createSlice({
-  name: 'uesr',
+  name: 'user',
   initialState: {
     current: {},
     setting: {},
