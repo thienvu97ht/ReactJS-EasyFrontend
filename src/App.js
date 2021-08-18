@@ -1,6 +1,6 @@
 import Header from 'components/Header';
 import { useEffect } from 'react';
-import { NavLink, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import productApi from './api/productApi';
 import './App.css';
 import AlbumFeature from './features/Album';
@@ -13,7 +13,7 @@ function App() {
       const params = {
         _limit: 10,
       };
-      const productList = await productApi.getAll(params);
+      await productApi.getAll(params);
     };
     fetchProducts();
   }, []);

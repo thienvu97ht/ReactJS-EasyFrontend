@@ -6,12 +6,15 @@ import App from './App';
 import store from './app/store';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import { SnackbarProvider } from 'notistack';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <Router>
-        <App />
+        <SnackbarProvider anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
+          <App />
+        </SnackbarProvider>
       </Router>
     </Provider>
   </React.StrictMode>,
