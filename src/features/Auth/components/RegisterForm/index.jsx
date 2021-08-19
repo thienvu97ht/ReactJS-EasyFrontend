@@ -112,6 +112,7 @@ function RegisterForm(props) {
           color="primary"
           fullWidth
           disabled={isSubmitting}
+          size="large"
         >
           Create an account
         </Button>
