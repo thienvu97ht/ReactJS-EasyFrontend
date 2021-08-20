@@ -1,4 +1,6 @@
 import Header from 'components/Header';
+import NotFound from 'components/NotFound';
+import ProductFeature from 'features/Product';
 import { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import productApi from './api/productApi';
@@ -26,8 +28,9 @@ function App() {
         <Route path="/" component={CounterFeature} exact />
         <Route path="/todos" component={TodoFeature} />
         <Route path="/albums" component={AlbumFeature} />
+        <Route path="/products" component={ProductFeature} />
 
-        {/* <Route component={NotFound} /> */}
+        <Route component={NotFound} />
       </Switch>
     </div>
   );

@@ -48,7 +48,7 @@ const MODE = {
 export default function Header() {
   const dispatch = useDispatch();
   const loggedInUser = useSelector((state) => state.user.current);
-  const isLoggedIn = !!loggedInUser.id;
+  let isLoggedIn = !!loggedInUser.id;
 
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState(MODE.LOGIN);
@@ -73,6 +73,7 @@ export default function Header() {
   const handleLogoutClick = () => {
     const action = logout();
     dispatch(action);
+    handleCloseMenu();
   };
 
   const classes = useStyles();
