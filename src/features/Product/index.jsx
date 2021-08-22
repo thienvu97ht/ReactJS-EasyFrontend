@@ -9,7 +9,6 @@ function ProductFeature(props) {
 
   return (
     <div>
-      Product Feature
       <Switch>
         <Route path={match.url} exact component={ListPage} />
       </Switch>
