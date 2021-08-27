@@ -1,5 +1,6 @@
 import { Box, Container, Grid, makeStyles, Paper } from '@material-ui/core';
 import React from 'react';
+import ProductThumbnail from '../components/ProductThumbnail';
 
 DetailPage.propTypes = {};
 
@@ -26,7 +27,7 @@ function DetailPage() {
         <Paper elevation={0}>
           <Grid container>
             <Grid item className={classes.left}>
-              Thumbnail
+              <ProductThumbnail product={{}} />
             </Grid>
             <Grid item className={classes.right}>
               Product Info
