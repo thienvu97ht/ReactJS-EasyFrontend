@@ -53,20 +53,6 @@ function ListPage(props) {
     page: 1,
   });
   const [loading, setLoading] = useState(true);
-  // const [filters, setFilters] = useState(() => ({
-  //   ...queryParams,
-  //   _page: Number.parseInt(queryParams._page) || 1,
-  //   _limit: Number.parseInt(queryParams._limit) || 9,
-  //   _sort: queryParams._sort || 'salePrice:ASC',
-  // }));
-
-  // useEffect(() => {
-  //   // Sync filters to URL
-  //   history.push({
-  //     pathname: history.location.pathname,
-  //     search: queryString.stringify(filters),
-  //   });
-  // }, [history, filters]);
 
   useEffect(() => {
     (async () => {
@@ -83,11 +69,6 @@ function ListPage(props) {
   }, [queryParams]);
 
   const handlePageChange = (e, page) => {
-    // setFilters((prevFilters) => ({
-    //   ...prevFilters,
-    //   _page: page,
-    // }));
-
     const filters = {
       ...queryParams,
       _page: page,
@@ -100,11 +81,6 @@ function ListPage(props) {
   };
 
   const handleSortChange = (newSortValue) => {
-    // setFilters((prevFilters) => ({
-    //   ...prevFilters,
-    //   _sort: newSortValue,
-    // }));
-
     const filters = {
       ...queryParams,
       _sort: newSortValue,
@@ -117,11 +93,6 @@ function ListPage(props) {
   };
 
   const handleFiltersChange = (newFilters) => {
-    // setFilters((prevFilters) => ({
-    //   ...prevFilters,
-    //   ...newFilters,
-    // }));
-
     const filters = {
       ...queryParams,
       ...newFilters,
@@ -134,8 +105,6 @@ function ListPage(props) {
   };
 
   const setNewFilter = (newFilters) => {
-    // setFilters(newFilters);
-
     history.push({
       pathname: history.location.pathname,
       search: queryString.stringify(newFilters),
