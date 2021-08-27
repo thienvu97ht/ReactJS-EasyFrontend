@@ -112,7 +112,7 @@ function ListPage(props) {
   };
 
   return (
-    <Box pt={4}>
+    <Box>
       <Container>
         <Grid container spacing={1}>
           <Grid item className={classes.left}>
