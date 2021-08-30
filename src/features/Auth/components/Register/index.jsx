@@ -1,4 +1,3 @@
-import { unwrapResult } from '@reduxjs/toolkit';
 import { register } from 'features/Auth/userSlice';
 import { useSnackbar } from 'notistack';
 import PropTypes from 'prop-types';
@@ -21,8 +20,8 @@ function Register(props) {
 
       console.log(values);
       const action = register(values);
-      const resultAction = await dispatch(action);
-      const user = unwrapResult(resultAction);
+      await dispatch(action);
+      // const user = unwrapResult(resultAction);
 
       // close dialog
       const { closeDialog } = props;

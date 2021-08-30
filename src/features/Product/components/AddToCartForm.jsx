@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, makeStyles } from '@material-ui/core';
-import InputField from 'components/form-controls/InputField';
+import { Button } from '@material-ui/core';
+import QuantityField from 'components/form-controls/QuantityField';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -10,23 +10,13 @@ AddToCartForm.propTypes = {
   onSubmit: PropTypes.func,
 };
 
-const useStyles = makeStyles((theme) => ({
-  root: {},
-
-  left: {
-    width: '400px',
-    padding: theme.spacing(1.5),
-    borderRight: `1px solid ${theme.palette.grey[300]}`,
-  },
-  right: {
-    flex: '1 1 0',
-    padding: theme.spacing(1.5),
-  },
-}));
-
 function AddToCartForm({ onSubmit = null }) {
   const schema = yup.object().shape({
-    quantity: yup.number().required('Please enter quntity').min(1, 'Please enter at least 1'),
+    quantity: yup
+      .number()
+      .required('Please enter quntity')
+      .min(1, 'Minium value is 1')
+      .typeError('Please enter a number'),
   });
 
   const form = useForm({
@@ -45,10 +35,17 @@ function AddToCartForm({ onSubmit = null }) {
 
   return (
     <form onSubmit={form.handleSubmit(handleSubmit)}>
-      <InputField name="quantity" label="Quantity" form={form} />
+      <QuantityField name="quantity" label="Quantity" form={form} />
 
-      <Button type="submit" variant="contained" color="primary" fullWidth size="large">
-        Buy
+      <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+        fullWidth
+        size="large"
+        style={{ width: '250px' }}
+      >
+        ADD TO CART
       </Button>
     </form>
   );
