@@ -1,9 +1,12 @@
 import { Box, Container, Grid, makeStyles, Paper, Typography } from '@material-ui/core';
 import React from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import AddToCartForm from '../components/AddToCartForm';
+import ProductAdditional from '../components/ProductAdditional';
+import ProductDescription from '../components/ProductDescription';
 import ProductInfo from '../components/ProductInfo';
 import ProductMenu from '../components/ProductMenu';
+import ProductReview from '../components/ProductReview';
 import ProductThumbnail from '../components/ProductThumbnail';
 import useProductDetail from '../hooks/useProductDetail';
 
@@ -27,6 +30,7 @@ function DetailPage() {
   const classes = useStyles();
   const {
     params: { productId },
+    url,
   } = useRouteMatch();
 
   const { product, loading } = useProductDetail(productId);
@@ -59,6 +63,16 @@ function DetailPage() {
         </Paper>
 
         <ProductMenu />
+
+        <Switch>
+          <Route exact path={url}>
+            <ProductDescription product={product} />
+          </Route>
+
+          <Route exact path={`${url}/additional`} component={ProductAdditional} />
+
+          <Route exact path={`${url}/review`} component={ProductReview} />
+        </Switch>
       </Container>
     </Box>
   );
