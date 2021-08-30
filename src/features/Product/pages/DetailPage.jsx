@@ -1,4 +1,12 @@
-import { Box, Container, Grid, makeStyles, Paper, Typography } from '@material-ui/core';
+import {
+  Box,
+  Container,
+  Grid,
+  LinearProgress,
+  makeStyles,
+  Paper,
+  Typography,
+} from '@material-ui/core';
 import React from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import AddToCartForm from '../components/AddToCartForm';
@@ -13,7 +21,9 @@ import useProductDetail from '../hooks/useProductDetail';
 DetailPage.propTypes = {};
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+    paddingBottom: theme.spacing(4),
+  },
 
   left: {
     width: '400px',
@@ -23,6 +33,13 @@ const useStyles = makeStyles((theme) => ({
   right: {
     flex: '1 1 0',
     padding: theme.spacing(1.5),
+  },
+
+  loading: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
   },
 }));
 
@@ -37,8 +54,8 @@ function DetailPage() {
 
   if (loading) {
     return (
-      <Box>
-        <Typography>Loading</Typography>
+      <Box className={classes.loading}>
+        <LinearProgress />
       </Box>
     );
   }
