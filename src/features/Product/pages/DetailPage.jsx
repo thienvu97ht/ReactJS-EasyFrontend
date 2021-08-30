@@ -3,6 +3,7 @@ import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import AddToCartForm from '../components/AddToCartForm';
 import ProductInfo from '../components/ProductInfo';
+import ProductMenu from '../components/ProductMenu';
 import ProductThumbnail from '../components/ProductThumbnail';
 import useProductDetail from '../hooks/useProductDetail';
 
@@ -56,6 +57,8 @@ function DetailPage() {
             </Grid>
           </Grid>
         </Paper>
+
+        <ProductMenu />
       </Container>
     </Box>
   );
