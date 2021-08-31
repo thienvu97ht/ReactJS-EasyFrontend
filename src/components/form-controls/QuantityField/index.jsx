@@ -18,10 +18,24 @@ const useStyles = makeStyles((theme) => ({
   root: {},
 
   box: {
-    maxWidth: '200px',
+    maxWidth: '150px',
     display: 'flex',
     alignItems: 'center',
     flexFlow: 'row nowrap',
+  },
+
+  input: {
+    '& input[type=number]': {
+      '-moz-appearance': 'textfield',
+    },
+    '& input[type=number]::-webkit-outer-spin-button': {
+      '-webkit-appearance': 'none',
+      margin: 0,
+    },
+    '& input[type=number]::-webkit-inner-spin-button': {
+      '-webkit-appearance': 'none',
+      margin: 0,
+    },
   },
 }));
 
@@ -63,6 +77,7 @@ function QuantityField(props) {
                 value={value}
                 onBlur={onBlur}
                 onChange={onChange}
+                className={classes.input}
               />
 
               <IconButton
