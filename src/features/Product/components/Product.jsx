@@ -1,4 +1,4 @@
-import { Box, Typography } from '@material-ui/core';
+import { Box, makeStyles, Typography } from '@material-ui/core';
 import { STATIC_HOST, THUMBNAIL_PLACEHOLDER } from 'constants/index';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -9,7 +9,17 @@ Product.propTypes = {
   product: PropTypes.object,
 };
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '&:hover': {
+      cursor: 'pointer',
+      boxShadow: '0 10px 20px rgba(0,0,0,0.09)',
+    },
+  },
+}));
+
 function Product({ product }) {
+  const classes = useStyles();
   const history = useHistory();
   const thumbnailUrl = product.thumbnail
     ? `${STATIC_HOST}${product.thumbnail?.url}`
@@ -21,7 +31,7 @@ function Product({ product }) {
   };
 
   return (
-    <Box padding={1} onClick={handleClick}>
+    <Box padding={1} onClick={handleClick} className={classes.root}>
       <Box padding={1} minHeight="215px">
         <img src={thumbnailUrl} alt={product.name} width="100%" />
       </Box>
