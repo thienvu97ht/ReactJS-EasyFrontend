@@ -4,8 +4,6 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import DetailPage from './pages/DetailPage';
 import ListPage from './pages/ListPage';
 
-ProductFeature.propTypes = {};
-
 function ProductFeature(props) {
   const match = useRouteMatch();
 
