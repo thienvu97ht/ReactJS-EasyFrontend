@@ -6,13 +6,13 @@ ProductThumbnail.propTypes = {
   product: PropTypes.object,
 };
 
-function ProductThumbnail({ product }) {
+function ProductThumbnail({ product, className }) {
   const thumbnailUrl = product.thumbnail
     ? `${STATIC_HOST}${product.thumbnail?.url}`
     : THUMBNAIL_PLACEHOLDER;
 
   return (
-    <Box>
+    <Box className={className}>
       <img src={thumbnailUrl} alt={product.name} width="100%" />
     </Box>
   );

@@ -1,12 +1,18 @@
+import { Box } from '@material-ui/core';
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { formatPrice } from 'utils';
-import { cartTotalSelector } from './selectors';
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
+import CartListPage from './pages/CartListPage';
 
 function CartFeature(props) {
-  const cartTotal = useSelector(cartTotalSelector);
+  const match = useRouteMatch();
 
-  return <div>Cart Feature {formatPrice(cartTotal)} </div>;
+  return (
+    <Box pt={4}>
+      <Switch>
+        <Route path={match.url} exact component={CartListPage} />
+      </Switch>
+    </Box>
+  );
 }
 
 export default CartFeature;
